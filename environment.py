@@ -7,6 +7,7 @@ for param in os.environ.keys():
     #var_string.append("\n")
 for i in var_string:
     print str(i)
+
     
         
  
