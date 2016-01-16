@@ -1,0 +1,17 @@
+<!--
+the extend statement tells this file to inherit the general
+html elements from the base.html file
+-->
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Environment Variables</h2>
+    <hr>
+    {% for note in var_string %}
+    <p>
+        <b>{{ note }}</b> <br>
+    </p>
+    <hr>
+    {% endfor %}
+    
+{% endblock %}

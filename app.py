@@ -1,6 +1,9 @@
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template
+import os
+
+#os.environ["PA_FLAG"] = "True"
 
 app = Flask(__name__)
 
@@ -31,6 +34,16 @@ def index():
         "content":"When finished coding this app, deploy it to pythonanywhere"
     }]       
     return render_template("mynote.html", notes = notes)
+    
+@app.route('/env')
+def env_vars():
+    var_string = []
+    for param in os.environ.keys():
+        var_list = {param : os.environ[param]}
+        var_string.append(var_list)
         
+    return render_template("environ.html", var_string = var_string)
+    
+local_flag = os.getenv("PA_FLAG", "False")        
 if __name__ == "__main__":
     app.run()
